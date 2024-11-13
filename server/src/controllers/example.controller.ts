@@ -6,7 +6,7 @@ export const example = new Elysia()
   .get("/", () => "Hello Ronaldo Sui!!!", {
     detail: {
       tags: ["Example"],
-      summary: ('Get Hello'),
+      summary: ('Get Hello TJ'),
       Description: 'Hello Thanaphat'
     }
   })
