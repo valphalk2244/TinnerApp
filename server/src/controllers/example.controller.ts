@@ -7,13 +7,13 @@ export const example = new Elysia()
     detail: {
       tags: ["Example"],
       summary: ('Get Hello'),
-      Description: 'Hello Ronaldo Sui!!!'
+      Description: 'Hello Thanaphat'
     }
   })
 
   .post("/about", ({ body }) => {
     return {
-      id: '123',
+      id: '159357',
       msg: 'ayo' + body.name
     }
   }, {
@@ -23,6 +23,6 @@ export const example = new Elysia()
     detail: {
       tags: ["Example"],
       summary: ('About'),
-      Description: 'Hello Ronaldo Sui!!!'
+      Description: 'Hello I love Roblox'
     }
   })
