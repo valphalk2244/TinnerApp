@@ -3,11 +3,18 @@ import { example } from "./controllers/example.controller"
 import { SwaggerConfig } from "./config/swagger.config"
 import { tlsConfig } from "./config/tls.config"
 import cors from "@elysiajs/cors"
+import { MongoDB } from "./config/database.config"
+import jwt from "@elysiajs/jwt"
+import { jwtConfig } from "./config/jwt.config"
+import { AccountController } from "./controllers/account.controller"
+
+MongoDB.connect()
 
 const app = new Elysia()
   .use(cors())
+  .use(jwtConfig)
   .use(SwaggerConfig)
-  .use(example)
+  .use(AccountController)
 
   .listen({
     port: Bun.env.PORT || 8000,

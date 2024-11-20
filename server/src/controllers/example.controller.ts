@@ -11,6 +11,8 @@ export const example = new Elysia()
     }
   })
 
+  .get("/home", () => "Wowww", {})
+
   .post("/about", ({ body }) => {
     return {
       id: '159357',
