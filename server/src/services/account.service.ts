@@ -1,5 +1,6 @@
-import { login, register, user } from './../types/account.type'
+import { login, register } from './../types/account.type'
 import { User } from './../models/User.model'
+import { user } from '../types/user.type'
 
 export const AccountService = {
     login: async function (loginData: login): Promise<user> {
