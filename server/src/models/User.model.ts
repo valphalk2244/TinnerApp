@@ -29,27 +29,6 @@ schema.methods.toUser = function (): user {
     let ageString = 'N/A'
     if (this.date_of_birth)
         ageString = `${calculateAge(this.date_of_birth)}`
-
-
-    // todo: implement like feature
-    // const userPhotos = Array.isArray(this.photos)
-    //     ? this.photos.map(photo => (new Photo(photo)).toPhoto())
-    //     : undefined
-
-    // const parseLikeUser = (user: IUserDocument[]) => {
-    //     return user.map(u => {
-    //         if (u.display_name)
-    //             return u.toUser()
-    //         return u._id!.toString()
-    //     })
-    // }
-    // const following = Array.isArray(this.following)
-    //     ? parseLikeUser(this.following)
-    //     : undefined
-    // const followers = Array.isArray(this.followers)
-    //     ? parseLikeUser(this.followers)
-    //     : undefined
-
     return {
         id: this._id.toString(),
         display_name: this.display_name,
@@ -64,11 +43,6 @@ schema.methods.toUser = function (): user {
         looking_for: this.looking_for,
         location: this.location,
         gender: this.gender,
-        // todo: photo feature
-        // photos: userPhotos,
-        // todo: like feature
-        // following: following,
-        // followers: followers,
     }
 }
 

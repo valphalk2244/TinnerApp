@@ -8,6 +8,8 @@ import jwt from "@elysiajs/jwt"
 import { jwtConfig } from "./config/jwt.config"
 import { AccountController } from "./controllers/account.controller"
 import { UserController } from "./controllers/user.controller"
+import staticPlugin from "@elysiajs/static"
+import { PhotoController } from "./controllers/photo.controller"
 
 MongoDB.connect()
 
@@ -15,6 +17,15 @@ const app = new Elysia()
   .use(cors())
   .use(jwtConfig)
   .use(SwaggerConfig)
+  .use(PhotoController)
+
+
+  .use(staticPlugin({
+    assets: "public/uploads",
+    prefix: "img"
+  }))
+
+
   .use(AccountController)
   .use(UserController)
 
