@@ -17,5 +17,5 @@ export const PhotoController = new Elysia({
         detail: { summary: "Upload Photo" },
         body: t.Object({
             imgFile: t.File()
-        }),
+        })
     })
