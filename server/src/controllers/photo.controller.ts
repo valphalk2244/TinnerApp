@@ -1,21 +1,30 @@
-import Elysia, { t } from "elysia"
+import Elysia, { error, t } from "elysia"
+import { ImageHelper } from "../helper/image.helper"
+import { file } from "bun"
+import { PhotoDto } from "../types/photo.type"
+import { AuthMiddleware, AuthPayLoad } from "../middlewares/auth.middleware"
+import { PhotoService } from "../services/photo.service"
 
 export const PhotoController = new Elysia({
     prefix: "/api/photo",
     tags: ['Photo']
 })
+    .use(PhotoDto)
+    .use(AuthMiddleware)
 
-    .post('/', async ({ body: { imgFile } }) => {
-        const filename = `$(Date.now())-${imgFile.name}`
-        const filePath = `public/uploads/${filename}`
-        const buffer = await imgFile.arrayBuffer()
-        await Bun.write(filePath, buffer)
-
-        return `https://localhost:8000/img/${filename}`
+    .post('/', async ({ body: { file }, set, Auth }) => {
+        const user_id = (Auth.payload as AuthPayLoad).id
+        try {
+            return await PhotoService.upload(file, user_id)
+        } catch (error) {
+            set.status = "Bad Request"
+            if (error instanceof Error)
+                throw error
+            throw new Error("Something went wrong")
+        }
     }, {
-
         detail: { summary: "Upload Photo" },
-        body: t.Object({
-            imgFile: t.File()
-        })
+        body: "upload",
+        response: "photo",
+        isSignIn: true
     })

@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 const username = Bun.env.DB_USERNAME || 'your-username'
 const password = Bun.env.DB_PASSWORD || 'your-password'
-const db_name = Bun.env.MONGO_DBNAME || 'tinnerapp'
+const db_name = Bun.env.MONGO_DBNAME || 'tinner_class_example'
 
 const uri = `mongodb+srv://${username}:${password}@cluster0.xfnsh.mongodb.net/?retryWrites=true&w=majority&appName=${db_name}`
 

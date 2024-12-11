@@ -14,6 +14,7 @@ export const UserService = {
         const query = User.find(filter).sort({ last_active: -1 })
         const skip = pagination.pageSize * (pagination.currentPage - 1)
         query.skip(skip).limit(pagination.pageSize)
+            .populate('photos')
 
         const [docs, total] = await Promise.all([
             query.exec(),
@@ -27,12 +28,12 @@ export const UserService = {
         }
     },
 
-    // getByUserName: async function (username: string): Promise<user> {
-    //     const user = await User.findOne({ username: username }).exec()
-    //     if (user)
-    //         return user.toUser()
-    //     throw new Error('User not found')
-    // },
+    getByUserName: async function (username: string): Promise<user> {
+        const user = await User.findOne({ username: username }).populate('photos').exec()
+        if (user)
+            return user.toUser()
+        throw new Error('User not found')
+    },
 
     updateProfile: async function (newProfile: updateProfile, user_id: string): Promise<user> {
         const user = await User.findByIdAndUpdate(user_id, { $set: newProfile }, { new: true, runValidators: true })
