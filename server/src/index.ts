@@ -1,3 +1,4 @@
+import { LikeController } from './controllers/like.controller'
 import { Elysia, t } from "elysia"
 import { example } from "./controllers/example.controller"
 import { SwaggerConfig } from "./config/swagger.config"
@@ -18,6 +19,7 @@ const app = new Elysia()
   .use(jwtConfig)
   .use(SwaggerConfig)
   .use(PhotoController)
+  .use(LikeController)
 
 
   .use(staticPlugin({

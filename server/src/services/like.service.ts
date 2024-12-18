@@ -78,5 +78,4 @@ export const LikeService = {
             items: following
         }
     },
-
 }
