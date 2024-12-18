@@ -44,7 +44,7 @@ export const UserDto = new Elysia().model({
     updateProfile: _updateProfile,
     users: _userPaginator,
     user: _user,
-    traget_id: t.Object({ traget_id: t.String() }),
+    target_id: t.Object({ target_id: t.String() }),
 })
 
 export type updateProfile = Static<typeof _updateProfile>

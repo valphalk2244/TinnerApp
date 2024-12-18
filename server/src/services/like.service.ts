@@ -8,7 +8,7 @@ export const LikeService = {
     toggleLike: async function (user_id: string, target_id: string): Promise<boolean> {
         const target = await User.findById(target_id).select("_id").exec()
         if (!target)
-            throw new Error("Target not found a a a error")
+            throw new Error("Target not found error")
 
         const likeTarget = await User.findOne({
             _id: new mongoose.Types.ObjectId(user_id),
@@ -38,7 +38,7 @@ export const LikeService = {
             _query.exec(),
             User.aggregate([
                 { $match: { _id: new mongoose.Types.ObjectId(user_id) } },
-                { $project: { count: { $size: { $isNull: ["$followers", []] } } } }
+                { $project: { total: { $size: { $isNull: ["$followers", []] } } } }
             ])
         ])
         pagination.length = total[0].count
@@ -65,7 +65,7 @@ export const LikeService = {
             _query.exec(),
             User.aggregate([
                 { $match: { _id: new mongoose.Types.ObjectId(user_id) } },
-                { $project: { count: { $size: { $isNull: ["$following", []] } } } }
+                { $project: { total: { $size: { $isNull: ["$following", []] } } } }
             ])
         ])
         pagination.length = total[0].count

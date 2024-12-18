@@ -21,7 +21,6 @@ const app = new Elysia()
   .use(PhotoController)
   .use(LikeController)
 
-
   .use(staticPlugin({
     assets: "public/uploads",
     prefix: "img"
