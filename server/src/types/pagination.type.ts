@@ -14,3 +14,17 @@ export function CreatePagination<T extends TSchema, U extends TSchema>(itemType:
         pagination: paginationType
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

@@ -15,3 +15,11 @@ export interface IUserDocument extends mongoose.Document, userWithOutId {
 export interface IUserModel extends mongoose.Model<IUserDocument> {
     createUser: (registerData: register) => Promise<IUserDocument>
 }
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

@@ -11,3 +11,17 @@ export const ImageHelper = {
         return acceptImageTypes.includes(fileTypeResult.mime)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

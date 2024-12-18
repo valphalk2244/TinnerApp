@@ -40,3 +40,41 @@ if ('cert' in tlsConfig)
 console.log(`🦊 Elysia is running at ${protocol}://${app.server?.hostname}:${app.server?.port}`)
 
 //eieiiiiiii
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

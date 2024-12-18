@@ -10,3 +10,14 @@ if (mode !== 'production') {
 }
 
 export const tlsConfig = { ..._tls }
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

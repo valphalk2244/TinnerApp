@@ -50,3 +50,20 @@ export type updateProfile = Static<typeof _updateProfile>
 export type userPagination = Static<typeof _userPagination>
 export type userPaginator = Static<typeof _userPaginator>
 export type user = Static<typeof _user>//userWithOutToken
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

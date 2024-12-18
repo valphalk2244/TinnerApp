@@ -16,3 +16,15 @@ export function calculateAge(dateOfBirth: Date): number {
 
     return age
 }
+
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

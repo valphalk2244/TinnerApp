@@ -13,3 +13,14 @@ export interface IPhotoDocument extends mongoose.Document, photoWithOutID {
 export interface IPhotoModel extends mongoose.Model<IPhotoDocument> {
     setAvatar: (photo_id: string, user_id: string) => Promise<boolean>
 }
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

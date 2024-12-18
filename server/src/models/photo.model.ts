@@ -36,3 +36,18 @@ schema.statics.setAvatar = async function (photo_id: string, user_id: string): P
 }
 
 export const Photo = mongoose.model<IPhotoDocument, IPhotoModel>("Photo", schema)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

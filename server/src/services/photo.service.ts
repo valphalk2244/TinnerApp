@@ -1,5 +1,6 @@
+import { user } from './../types/user.type'
 import { Cloudinary } from './../config/cloudinary.config'
-import { file } from 'bun'
+import { $, file } from 'bun'
 import { Photo } from './../models/photo.model'
 import { photo } from '../types/photo.type'
 import { ImageHelper } from '../helper/image.helper'
@@ -41,15 +42,42 @@ export const PhotoService = {
         return uploadPhoto.toPhoto()
     },
 
-    get: async function (user_id: string): Promise<photo[]> {
-        throw new Error('Not implemented')
+    getPhotos: async function (user_id: string): Promise<photo[]> {
+        const photoDocs = await Photo.find({ user: user_id }).exec()
+        const photos = photoDocs.map(doc => doc.toPhoto())
+        return photos
     },
 
     delete: async function (photo_id: string): Promise<boolean> {
-        throw new Error('Not implemented')
+        const doc = await Photo.findById(photo_id).exec()
+        if (!doc)
+            throw new Error(`photo ${photo_id} not existing`)
+
+        await User.findByIdAndUpdate(doc.user, {
+            $pull: { photos: photo_id }
+        })
+
+        await Photo.findByIdAndDelete(photo_id)
+
+        await Cloudinary.uploader.destroy(doc.public_id)
+
+        return true
     },
 
     setAvatar: async function (photo_id: string, user_id: string): Promise<boolean> {
         throw new Error('Not implemented')
     },
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

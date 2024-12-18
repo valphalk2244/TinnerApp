@@ -74,3 +74,18 @@ schema.statics.createUser = async function (registerData: register): Promise<IUs
 }
 
 export const User = mongoose.model<IUserDocument, IUserModel>("User", schema)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//66162110377-4 ธนภัฏ แจ้งหมื่นไวย
