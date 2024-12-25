@@ -1,5 +1,4 @@
 
-import { file } from 'bun'
 import Elysia, { Static, t } from "elysia"
 
 export const _photo = t.Object({
