@@ -14,7 +14,7 @@ export class MemberComponent {
   constructor() {
     const url = environment.baseUrl + 'api/user/all'
     this._http.get<fake_user[]>(url).subscribe({
-      next: resp => { console.log(resp) }
+      next: resp => { console.log(resp) },
     })
   }
 }
