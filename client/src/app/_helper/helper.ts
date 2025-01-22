@@ -1,14 +1,15 @@
 import { User } from "../_models/user"
 
-const defaultAvatar = '/assets/images/defaultAvatar-removebg-preview'
-const defaultImage = '/assets/images/genrang-removebg-preview'
+const defaultAvatar = '/assets/defaultAvatar.png'
+const defaultImage = '/assets/Image-not-found.png'
 
 function getAvatar(user: User): string {
     if (user.photos) {
-        const avatar = user.photos.find(p => p.is_avatar == true)
+        const avatar = user.photos.find(p => p.is_avatar === true)
         if (avatar)
             return avatar.url
     }
+
     return defaultAvatar
 }
 

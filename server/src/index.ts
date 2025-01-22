@@ -1,5 +1,5 @@
 import { LikeController } from './controllers/like.controller'
-import { Elysia, t } from "elysia"
+import { Elysia, error, t } from "elysia"
 import { example } from "./controllers/example.controller"
 import { SwaggerConfig } from "./config/swagger.config"
 import { tlsConfig } from "./config/tls.config"
@@ -20,6 +20,7 @@ const app = new Elysia()
   .use(SwaggerConfig)
   .use(PhotoController)
   .use(LikeController)
+  .use(UserController)
 
   .use(staticPlugin({
     assets: "public/uploads",

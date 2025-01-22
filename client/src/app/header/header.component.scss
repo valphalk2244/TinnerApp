@@ -8,16 +8,16 @@ mat-toolbar button {
 }
 
 mat-toolbar button:not(.home-button) {
-    //border-bottom: 0.15cm solid rgb(70, 14, 14);
-    color: rgb(33, 138, 1);
+    // border-bottom: 0.15em solid yellow;
+    color: #500073bb;
 }
 
 mat-toolbar button.active:not(.home-button) {
-    color: black;
-    border-bottom: 0.01cm solid black;
+    color: #500073;
+    border-bottom: 0.15em solid red;
 }
 
 mat-toolbar .home-button {
-    color: black;
+    color: #500073;
     font-size: 1.2rem;
 }

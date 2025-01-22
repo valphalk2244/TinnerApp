@@ -9,17 +9,5 @@ import { HttpClient } from '@angular/common/http'
   styleUrl: './member.component.scss'
 })
 export class MemberComponent {
-  private _http = inject(HttpClient)
 
-  constructor() {
-    const url = environment.baseUrl + 'api/user/all'
-    this._http.get<fake_user[]>(url).subscribe({
-      next: resp => { console.log(resp) },
-    })
-  }
-}
-
-type fake_user = {
-  "id": string,
-  "name": string
 }
