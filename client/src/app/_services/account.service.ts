@@ -1,3 +1,4 @@
+import { updateProfile } from './../../../../server/src/types/user.type'
 import { inject, Injectable, signal } from '@angular/core'
 import { environment } from '../../environments/environment'
 import { HttpClient } from '@angular/common/http'
@@ -15,11 +16,13 @@ export class AccountService {
   private _http = inject(HttpClient)
 
   data = signal<{ user: User, token: string } | null>(null)
+  user: any
 
   constructor() {
     this.loadDataFromLocalStorage()
   }
 
+  // #region login and register
   logout() {
     localStorage.removeItem(this._key)
     this.data.set(null)
@@ -56,6 +59,10 @@ export class AccountService {
     }
   }
 
+  // #endregion
+
+  // #region local storage
+
   private saveDataToLocalStorage() {
     const jsonString = JSON.stringify(this.data())
     localStorage.setItem(this._key, jsonString)
@@ -68,4 +75,25 @@ export class AccountService {
       this.data.set(data)
     }
   }
+  // #endregion
+
+  // #region profile
+
+  async updateProfile(user: User): Promise<boolean> {
+    const url = environment.baseUrl + 'api/user/'
+    try {
+      const response = this._http.patch(url, user)
+      await firstValueFrom(response)
+      const currentData = this.data()
+      if (currentData) {
+        currentData.user = user
+        this.data.set(currentData)
+        this.saveDataToLocalStorage()
+      }
+    } catch (error) {
+      return false
+    }
+    return true
+  }
+  // #endregion
 }
