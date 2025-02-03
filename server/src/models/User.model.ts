@@ -1,10 +1,9 @@
-import { photo } from './../types/photo.type'
-import { register } from './../types/account.type'
 import mongoose from "mongoose"
-import { IUserDocument, IUserModel } from "../interfaces/useer.interface"
 import { calculateAge } from "../helper/date.helper"
-import { user } from '../types/user.type'
-import { Photo } from './photo.model'
+import { IUserDocument, IUserModel } from "../interfaces/user.interface"
+import { register } from "../types/account.types"
+import { user } from "../types/user.type"
+import { Photo } from "./photo.model"
 
 const schema = new mongoose.Schema<IUserDocument, IUserModel>({
     username: { type: String, required: true, unique: true },
@@ -18,26 +17,25 @@ const schema = new mongoose.Schema<IUserDocument, IUserModel>({
     location: { type: String },
     gender: { type: String },
 
-
+    // todo: implement photo feature
     photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo' }],
-
+    // todo: implement like feature
     followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 }, {
-    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+    timestamps: { createdAt: 'create_at', updatedAt: 'updated_at' }
 })
-
 schema.methods.toUser = function (): user {
     let ageString = 'N/A'
     if (this.date_of_birth)
         ageString = `${calculateAge(this.date_of_birth)}`
 
+
+
+
     const userPhotos = Array.isArray(this.photos)
         ? this.photos.map(photo => (new Photo(photo)).toPhoto())
         : undefined
-
-    // todo: implement like feature
-
 
     const parseLikeUser = (user: IUserDocument[]) => {
         return user.map(u => {
@@ -53,13 +51,12 @@ schema.methods.toUser = function (): user {
         ? parseLikeUser(this.followers)
         : undefined
 
-
     return {
         id: this._id.toString(),
         display_name: this.display_name,
         username: this.username,
-        created_at: this.created_at,
-        update_at: this.updated_at,
+        create_at: this.create_at,
+        updated_at: this.updated_at,
         // date_of_birth: this.date_of_birth,
         age: ageString,
         last_active: this.last_active,
@@ -68,12 +65,13 @@ schema.methods.toUser = function (): user {
         looking_for: this.looking_for ?? 'all',
         location: this.location,
         gender: this.gender,
+
         photos: userPhotos,
-        followers: followers,
+
         following: following,
+        followers: followers,
     }
 }
-
 schema.methods.verifyPassword = async function (password: string): Promise<boolean> {
     return await Bun.password.verify(password, this.password_hash)
 }
@@ -86,26 +84,8 @@ schema.statics.createUser = async function (registerData: register): Promise<IUs
         date_of_birth: registerData.date_of_birth,
         looking_for: registerData.looking_for,
         gender: registerData.gender,
-
     })
-
     await newUser.save()
     return newUser
 }
-
 export const User = mongoose.model<IUserDocument, IUserModel>("User", schema)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

@@ -1,25 +1,29 @@
-import { Paginator, UserQueryPagination } from "../_models/pagination"
+import { Paginator, QueryPagination } from "../_models/pagination"
 import { User } from "../_models/user"
-import { parseUserPhoto } from './helper'
+import { pareUserPhoto } from "./helper"
+
 
 const data = new Map()
-type cacheOpt = 'members' | 'chat' | 'follower' | 'following'
-type cacheValue = Paginator<UserQueryPagination, User>
+type cacheOpt = 'member' | 'chat' | 'follower' | 'following'
+type cacheValue = Paginator<QueryPagination, User>
 export const cacheManager = {
-    createKey: function <T extends { [key: string]: any }>(query: T): string {
+
+    createKey: function <T extends { [key: string]: any }>(query: T) {
         return Object.values(query).join('-')
     },
 
     load: function (key: string, opt: cacheOpt): cacheValue | undefined {
         return data.get(opt + key)
-
     },
 
-    save: function (key: string, opt: cacheOpt, value: cacheValue) {
-        // if (opt === 'chat')
-        value.items = value.items.map(u => parseUserPhoto(u))
+    save: function (key: string, value: cacheValue, opt: cacheOpt) {
+        // if (opt === 'chat') 
+        value.items = value.items.map(u => pareUserPhoto(u))
+
         data.set(opt + key, value)
     },
+
+
     clear: function (opt: cacheOpt | 'all') {
         if (opt === 'all')
             data.clear()
@@ -28,5 +32,7 @@ export const cacheManager = {
                 if (key.startsWith(opt))
                     data.delete(key)
             }
-    }
+    },
+
+
 }

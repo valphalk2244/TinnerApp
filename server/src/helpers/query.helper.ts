@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
-import { userPagination } from "../types/user.type"
 import { IUserDocument } from "../interfaces/user.interface"
+import { userPagination } from "../types/user.type"
 
 export const QueryHelper = {
 

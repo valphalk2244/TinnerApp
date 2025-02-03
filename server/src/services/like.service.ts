@@ -1,8 +1,7 @@
-import { pagination } from './../types/pagination.type'
-import mongoose from 'mongoose'
-import { User } from '../models/User.model'
-import { user, userPagination, userPaginator } from './../types/user.type'
-import { QueryHelper } from '../helper/query.helper'
+import mongoose from "mongoose"
+import { QueryHelper } from "../helper/query.helper"
+import { User } from "../models/user.model"
+import { userPaginatoin, userPaginator, user } from "../types/user.type"
 
 export const LikeService = {
     toggleLike: async function (user_id: string, target_id: string): Promise<boolean> {
@@ -24,7 +23,7 @@ export const LikeService = {
         return true
     },
 
-    getFollowers: async function (user_id: string, pagination: userPagination): Promise<userPaginator> {
+    getFollowers: async function (user_id: string, pagination: userPaginatoin): Promise<userPaginator> {
         const _query = User.findById(user_id)
             .populate({
                 path: "followers",
@@ -43,6 +42,7 @@ export const LikeService = {
         pagination.length = total[0].count
         let follower: user[] = []
         if (docs) {
+            // follower = docs.followers as user[]
             follower = docs.toUser()['followers'] as user[]
         }
         return {
@@ -52,7 +52,7 @@ export const LikeService = {
 
     },
 
-    getFollowing: async function (user_id: string, pagination: userPagination): Promise<userPaginator> {
+    getFollowing: async function (user_id: string, pagination: userPaginatoin): Promise<userPaginator> {
         const _query = User.findById(user_id)
             .populate({
                 path: "following",

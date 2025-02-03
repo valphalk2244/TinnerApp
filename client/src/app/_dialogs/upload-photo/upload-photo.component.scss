@@ -1,8 +1,9 @@
 input[type="file"] {
     visibility: hidden;
+
 }
 
-.content-container {
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,8 +12,8 @@ input[type="file"] {
     height: 100%;
     margin: 0;
 
-    .image-preview {
-        width: 30rem;
+    .img-preview {
+        width: 25rem;
         margin: 0;
 
         img {
@@ -20,14 +21,14 @@ input[type="file"] {
         }
     }
 
-    .err-Message {
+    .error-message {
         color: red;
         font-size: medium;
     }
 }
 
 mat-dialog-content {
-    margin: 0;
-    padding: 0;
+    margin: 0%;
+    padding: 0%;
     padding-bottom: 1em;
 }

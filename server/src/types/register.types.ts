@@ -8,18 +8,3 @@ export const _register = t.Object({
     looking_for: t.Union([t.Literal('male'), t.Literal('female'), t.Literal('all')]),
     gender: t.Optional(t.Union([t.Literal('male'), t.Literal('female'), t.Literal('all')])),
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

@@ -1,27 +1,14 @@
-import { fileTypeFromBlob, fileTypeFromBuffer } from 'file-type'
+import { fileTypeFromBuffer } from 'file-type'
 
-const acceptImageTypes = ['imgage/jpeg', 'image/png', 'image/jpg']
+const acceptImageTypes = ['image/jpeg', 'image/png']
 
 export const ImageHelper = {
     isImage: async function (fileArrayBuffer: ArrayBuffer): Promise<boolean> {
         // const buffer = await file.arrayBuffer()
+
         const fileTypeResult = await fileTypeFromBuffer(fileArrayBuffer)
         if (fileTypeResult === undefined)
             return false
         return acceptImageTypes.includes(fileTypeResult.mime)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-//66162110377-4 ธนภัฏ แจ้งหมื่นไวย

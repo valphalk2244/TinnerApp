@@ -1,45 +1,56 @@
-.page_404 {
-    padding: 40px 0;
-    background: #fff;
-    font-family: "Arvo", serif;
-    color: #333;
-    text-align: center;
-    font-size: 0.9rem;
+body {
+    overflow: hidden;
 }
 
-.animation {
-    background-image: url(https://olweb.com.br/media/shared-images/not-found.gif);
-    height: 400px;
-    background-position: center;
-    background-repeat: no-repeat;
+.room-bg {
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(circle at center center,
+            #0d7ea3 20%,
+            #021f29 80%);
 }
 
-.animation h1 {
-    font-size: 5rem;
+.room-bg .bird-img {
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    animation: move;
+    animation-duration: 5s;
+    transition: ease-in-out 2s;
+    width: 150px;
+    animation-iteration-count: infinite;
 }
 
-.button {
-    color: #fff !important;
-    padding: 10px 20px;
-    background: #5a77ff;
-    margin: 20px 0;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: 0.4s;
+@keyframes move {
+    0% {
+        right: 400px;
+        top: 300px;
+    }
+
+    100% {
+        right: -100px;
+        top: -100px;
+    }
 }
 
-.button:hover {
-    background: #8198ff;
+.room-bg .bird_cage-img {
+    right: 500px;
+    position: absolute;
 }
 
-h3 {
-    font-size: 2rem;
-    margin: 0;
+.room-bg .text {
+    color: transparent;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    background: #e8fcc2;
+    -webkit-background-clip: text;
 }
 
-#olweb-logo {
-    width: 180px;
-    margin: 50px 0 10px;
-    opacity: 0.5;
+.room-bg .text h1 {
+    font-size: 100px;
+}
+
+.room-bg .text h5 {
+    font-size: 50px;
 }

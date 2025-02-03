@@ -1,24 +1,21 @@
 mat-toolbar button {
-    display: flex;
-    align-items: center;
     border: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     cursor: pointer;
-    background: none
-}
-
-mat-toolbar button:not(.home-button) {
-    // border-bottom: 0.15em solid rgb(255, 6, 6);
-    color: purple;
-
+    background: none;
 }
 
 mat-toolbar button.active:not(.home-button) {
-    border-bottom: 0.15em solid rgb(0, 213, 255);
-    color: rgb(222, 2, 2);
+    color: aqua;
+}
 
+mat-toolbar button.active:not(.home-button) {
+    border-bottom: 0.15em solid skyblue;
 }
 
 mat-toolbar .home-button {
-    color: purple;
-    font-size: 1.2em;
+    font-size: xx-large;
+    color: cadetblue;
 }

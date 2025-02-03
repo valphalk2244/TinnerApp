@@ -1,43 +1,25 @@
-import { Tag, DescriptionSectionSSRKey } from './../../node_modules/@scalar/types/dist/legacy/reference-config.d'
 import Elysia, { t } from "elysia"
 
 export const example = new Elysia()
-
-  .get("/", () => "Hello Ronaldo Sui!!!", {
-    detail: {
-      tags: ["Example"],
-      summary: ('Get Hello TJ'),
-      Description: 'Hello Thanaphat'
-    }
-  })
-
-  .get("/home", () => "Wowww", {})
-
-  .post("/about", ({ body }) => {
-    return {
-      id: '159357',
-      msg: 'ayo' + body.name
-    }
-  }, {
-    body: t.Object({
-      name: t.String()
-    }),
-    detail: {
-      tags: ["Example"],
-      summary: ('About'),
-      Description: 'Hello I love Roblox'
-    }
-  })
-
-
-
-
-
-
-
-
-
-
-
-
-//66162110377-4 ธนภัฏ แจ้งหมื่นไวย
+    .get("/home", () => "Wowwww", {
+        detail: {
+            tags: ["Example"],
+            summary: "Get helloworld",
+            description: "Bra bra bra"
+        }
+    })
+    .post("/about", ({ body }) => {
+        return {
+            id: 'xxx',
+            msg: 'hello' + body.name
+        }
+    }, {
+        body: t.Object({
+            name: t.String(),
+        }),
+        detail: {
+            tags: ["Example"],
+            summary: "About",
+            description: "Numbertwo"
+        }
+    })
