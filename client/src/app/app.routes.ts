@@ -8,21 +8,6 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: '',
-        runGuardsAndResolvers: 'always',
-        canActivate: [authGuard],
-        children: [
-            {
-                path: 'members',
-                loadComponent: () => import('./member/member.component').then(c => c.MemberComponent)
-            },
-            {
-                path: 'profile',
-                loadComponent: () => import('./profile/profile.component').then(c => c.ProfileComponent)
-            }
-        ]
-    },
-    {
         path: 'login',
         loadComponent: () => import('./login/login.component').then(c => c.LoginComponent)
     },
@@ -31,12 +16,30 @@ export const routes: Routes = [
         loadComponent: () => import('./server-error/server-error.component').then(c => c.ServerErrorComponent)
     },
     {
+        path: '',
+        runGuardsAndResolvers: 'always',
+        canActivate: [authGuard],
+        children: [
+            {
+                path: 'member',
+                loadComponent: () => import('./member/member.component').then(c => c.MemberComponent)
+
+            }, {
+                path: 'profile',
+                loadComponent: () => import('./profile/profile.component').then(c => c.ProfileComponent)
+            }
+        ]
+    },
+    {
+        path: 'profile',
+        loadComponent: () => import('./profile/profile.component').then(c => c.ProfileComponent)
+    },
+    {
         path: '404',
         loadComponent: () => import('./not-found/not-found.component').then(c => c.NotFoundComponent)
     },
     {
         path: '**',
-        pathMatch: 'full',
         loadComponent: () => import('./not-found/not-found.component').then(c => c.NotFoundComponent)
     },
 ]
