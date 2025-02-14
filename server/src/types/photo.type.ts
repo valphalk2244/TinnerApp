@@ -10,7 +10,7 @@ export const _photo = t.Object({
 
 export const _uploadPhoto = t.Object({
     file: t.File({
-        type: ['image/jpeg', 'image/png'],
+        type: ['image/jpeg', 'image/png', 'image/jpg'],
         maxSize: '1m',
         error: 'image must be jpeg or png'
     })

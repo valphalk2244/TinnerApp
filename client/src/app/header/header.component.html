@@ -1,10 +1,5 @@
 <mat-toolbar>
-  <button
-    class="home-button"
-    routerLink="/"
-    routerLinkActive="active"
-    ariaCurrentWhenActive="page"
-  >
+  <button class="home-button" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
     <span>Tinner</span>
   </button>
 
@@ -15,10 +10,10 @@
     <span> Login</span>
   </button>
   } @if(user()){
-  <button>
+  <button routerLink="/followers" routerLinkActive="active">
     <span> Follower</span>
   </button>
-  <button>
+  <button routerLink="/following" routerLinkActive="active">
     <span> Following</span>
   </button>
 
@@ -33,7 +28,6 @@
 
     <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon><span>Logout</span>
-    </button></mat-menu
-  >
+    </button></mat-menu>
   }
 </mat-toolbar>

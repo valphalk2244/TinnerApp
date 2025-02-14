@@ -16,7 +16,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadPhotoComponent {
-  acceptedImageType = ['img/jpeg', 'image/png']
+  acceptedImageType = ['img/jpeg', 'image/png', 'image/jpg']
   imgFile: File | undefined
   imgPreview = signal<undefined | string>(undefined)
   errMessage = signal<undefined | string>(undefined)

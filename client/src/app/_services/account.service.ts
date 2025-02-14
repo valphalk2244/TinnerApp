@@ -39,7 +39,9 @@ export class AccountService {
 
     }
   }
-
+  public SetUser(user: User) {
+    this.setUser(user)
+  }
 
   private setUser(user: User) {
     const copyData = this.data()
@@ -136,18 +138,18 @@ export class AccountService {
   //#region profile
   async uploadPhoto(file: File): Promise<boolean> {
     const url = environment.baseUrl + 'api/photo/'
-    const fromData = new FormData()
-    fromData.append('file', file)
+    const formData = new FormData()
+    formData.append('file', file)
+
     try {
-      const response = this._http.post<Photo>(url, fromData)
+      const response = this._http.post<Photo>(url, formData)
       const photo = await firstValueFrom(response)
       const user = this.data()!.user
       if (user) {
         if (!user.photos)
           user.photos = []
-        user.photos.push(photo)
+        user.photos?.push(photo)
         this.setUser(user)
-
         return true
       }
     } catch (error) {
@@ -155,6 +157,7 @@ export class AccountService {
     }
     return false
   }
+
   //#endregion
 
 
