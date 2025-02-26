@@ -9,11 +9,15 @@
                 <mat-card-title>{{member.display_name+'@'+member.username}}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
+
                 <div class="left">
                     <img class="img-thumb" mat-card-image src="{{member.avatar}}" alt="Photo of member">
                     <mat-card-actions align="end">
                         <button mat-button (click)="photo.open()">
-                            <mat-icon>image</mat-icon>
+                            <mat-icon>image</mat-icon>Photo
+                        </button>
+                        <button mat-button (click)="toggleChat()">
+                            <mat-icon>chat</mat-icon>chat
                         </button>
                     </mat-card-actions>
                 </div>
@@ -47,7 +51,45 @@
         <button mat-button (click)="photo.close()">
             <mat-icon>close</mat-icon> back to profile
         </button>
+
+    </mat-drawer>
+
+    <mat-drawer #chat class="sidenav" mode="over" position="start">
+        <p>Chat</p>
     </mat-drawer>
 
 </mat-drawer-container>
+}
+@if(isChatOpen){
+<div class="chatter">
+    <div class="chatt-container">
+
+        <div class="chat-title">
+            @if (numberOfMessages - messages.length > 0) {
+            <div class="get-more-msg" (click)="getMoreChatHistory()">
+                {{numberOfMessages - messages.length > 0}} messages are not yet displayed. Click here to get them.
+            </div>
+            }
+            <div></div>
+            <button mat-button (click)="toggleChat()">
+                <mat-icon>east</mat-icon>
+            </button>
+        </div>
+
+        <ul class="chat" #chat>
+            @for (message of messages; track $index) {
+            <li>
+                <app-message [sender]="user" [recipent]="member" [message]="message"
+                    [previousMessageSendDate]="$index===0?undefined:messages[$index-1].created_at">
+                </app-message>
+            </li>
+            }
+        </ul>
+
+        <div class="input-container">
+            <input type="text" [(ngModel)]="newMessage" (keyup.enter)="send()">
+            <button type="button" (click)="send()">Send</button>
+        </div>
+    </div>
+</div>
 }

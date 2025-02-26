@@ -62,7 +62,7 @@ export class LikeService {
     const cacheData = cacheManager.load(key, type)
     if (cacheData) {
       console.log(`----> load ${type} data from cache <----`)
-      setSignal(cacheData)
+      setSignal(cacheData as Paginator<UserQueryPagination, User>)
       return
     }
     console.log(`----> load ${type} data API <----`)

@@ -64,10 +64,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    background-color: yellowgreen;
+    background-color: rgba(99, 99, 99, 0.363);
 
     .chatt-container {
-        background: purple;
+        background: rgb(255, 255, 255);
         border-radius: 5px;
         box-shadow: 0 0px 10px 5px rgba(36, 34, 34, 0.2);
         overflow: hidden;
@@ -131,17 +131,23 @@
             }
         }
 
-        .inpurt-container {
+        .input-container {
             position: relative;
             width: calc(100% - 50px);
             margin-top: 0.5em;
             margin-left: 1em;
-            padding: 0 10px 0 10px;
-            background-color: white;
-            border: 2px snow;
+            padding: 8px;
+            background-color: #ffffff;
             border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(137, 137, 137, 0.1);
+            display: flex;
+            align-items: center;
+            border: 1px solid #030303;
+            transition: all 0.3s ease-in-out;
+
 
             input {
+                margin-top: 1.5em;
                 font-size: medium;
                 width: calc(100% - 50px);
                 padding-right: 50px;
